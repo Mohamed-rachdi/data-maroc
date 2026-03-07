@@ -34,7 +34,7 @@ export function POIMarocPage() {
           'adresses maroc',
           'commerces maroc',
         ]}
-        canonical="https://datamaroc.ma/poi-maroc"
+        canonical="https://geodatamaroc.com/poi-maroc"
       />
 
       <div className="bg-gradient-to-b from-red-50 to-white">
