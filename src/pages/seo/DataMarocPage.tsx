@@ -147,7 +147,7 @@ export function DataMarocPage() {
               <li className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-red-600"></div>
                 <span className="text-gray-700">
-                  <strong>Démographie :</strong> Population HCP par commune
+                  <strong>Démographie :</strong> Population HCP par district
                 </span>
               </li>
             </ul>
