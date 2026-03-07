@@ -9,7 +9,7 @@ export function Footer() {
           <div>
             <Link to="/" className="flex items-center gap-2 text-white font-bold text-xl mb-4">
               <Database className="w-6 h-6 text-red-600" />
-              <span>Data Maroc</span>
+              <span>Geo Data Maroc</span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
               La plus grande plateforme de données sur le Maroc. Explorez, téléchargez et analysez
