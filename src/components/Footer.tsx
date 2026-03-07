@@ -58,7 +58,7 @@ export function Footer() {
               </li>
               <li>
                 <Link to="/data-maroc" className="hover:text-red-500 transition">
-                  Data Maroc
+                  Geo Data Maroc
                 </Link>
               </li>
               <li>
