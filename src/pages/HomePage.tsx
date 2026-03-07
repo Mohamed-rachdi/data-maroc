@@ -42,7 +42,7 @@ export function HomePage() {
         title="Plateforme de Données sur le Maroc"
         description="Explorez, téléchargez et analysez des datasets exclusifs sur l'économie, les entreprises, la mobilité, le climat et bien plus au Maroc. POI Maroc, données entreprises, météo, football, télécom."
         keywords={[
-          'data maroc',
+          'Geo Data Maroc',
           'open data maroc',
           'poi maroc',
           'télécharger données maroc',

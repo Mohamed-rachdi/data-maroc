@@ -33,9 +33,9 @@ export function BlogPage() {
   return (
     <>
       <SEO
-        title="Blog Data Maroc"
+        title="Blog Geo Data Maroc"
         description="Articles, guides et analyses sur les données au Maroc. Découvrez comment exploiter les datasets pour votre business."
-        keywords={['blog data maroc', 'articles données maroc', 'guides datasets']}
+        keywords={['blog Geo Data Maroc', 'articles données maroc', 'guides datasets']}
       />
 
       <div className="bg-gradient-to-b from-red-50 to-white border-b border-gray-200">

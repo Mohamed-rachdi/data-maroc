@@ -140,9 +140,9 @@ export function DemoRequestPage() {
                   <option value="POI Maroc">POI Maroc - Google Maps</option>
                   <option value="Entreprises Maroc">Entreprises Maroc + ICE</option>
                   <option value="Météo Maroc">Données Météo Historiques</option>
-                  <option value="Football Botola">Résultats Botola Pro</option>
+                  <option value="Football">Résultats</option>
                   <option value="Télécom Maroc">Trafic Télécom Maroc</option>
-                  <option value="Population HCP">Population HCP par Commune</option>
+                  <option value="Population HCP">Population HCP par district</option>
                   <option value="Autre">Autre dataset</option>
                 </select>
               </div>

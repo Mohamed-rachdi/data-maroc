@@ -78,7 +78,7 @@ export function DatasetPage() {
         title={dataset.name}
         description={dataset.description}
         keywords={[
-          'data maroc',
+          'Geo Data Maroc',
           dataset.name.toLowerCase(),
           dataset.geographic_coverage.toLowerCase(),
         ]}

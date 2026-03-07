@@ -10,7 +10,7 @@ interface SEOProps {
 
 export function SEO({ title, description, keywords = [], canonical, ogImage }: SEOProps) {
   useEffect(() => {
-    document.title = `${title} | Data Maroc`;
+    document.title = `${title} | Geo Data Maroc`;
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -36,11 +36,11 @@ export function SEO({ title, description, keywords = [], canonical, ogImage }: S
 
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute('content', `${title} | Data Maroc`);
+      ogTitle.setAttribute('content', `${title} | Geo Data Maroc`);
     } else {
       const meta = document.createElement('meta');
       meta.setAttribute('property', 'og:title');
-      meta.content = `${title} | Data Maroc`;
+      meta.content = `${title} | Geo Data Maroc`;
       document.head.appendChild(meta);
     }
 

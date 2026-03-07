@@ -27,7 +27,7 @@ export function DataMarocPage() {
         title="Data Maroc - Télécharger des Données sur le Maroc"
         description="Accédez aux meilleures sources de données sur le Maroc : POI, entreprises, météo, démographie, télécom. Datasets complets et mis à jour régulièrement."
         keywords={[
-          'data maroc',
+          'Geo Data Maroc',
           'données maroc',
           'base de données maroc',
           'télécharger données maroc',
@@ -40,7 +40,7 @@ export function DataMarocPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="max-w-3xl">
             <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Data Maroc : La Référence pour les Données Marocaines
+              Geo Data Maroc : La Référence pour les Données Marocaines
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
               Accédez à la plus grande collection de datasets sur le Maroc. Données géographiques,
