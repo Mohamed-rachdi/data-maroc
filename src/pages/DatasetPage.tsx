@@ -71,7 +71,7 @@ export function DatasetPage() {
       </div>
     );
   }
-
+  const columns = dataset.fields_structure.map((field) => field.name);
   return (
     <>
       <SEO
@@ -207,7 +207,7 @@ export function DatasetPage() {
                     <thead className="bg-gray-50 border-b border-gray-200">
                       <tr>
                         {dataset.sample_data.length > 0 &&
-                          Object.keys(dataset.sample_data[0]).map((key) => (
+                          columns.map((key) => (
                             <th
                               key={key}
                               className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
@@ -220,11 +220,12 @@ export function DatasetPage() {
                     <tbody className="divide-y divide-gray-200">
                       {dataset.sample_data.map((row, index) => (
                         <tr key={index} className="hover:bg-gray-50">
-                          {Object.values(row).map((value, i) => (
-                            <td key={i} className="px-4 py-3 text-gray-700 whitespace-nowrap">
-                              {typeof value === 'object' ? JSON.stringify(value) : String(value)}
-                            </td>
-                          ))}
+                          {columns.map((key) => (<td key={key} className="px-4 py-3 text-gray-700 whitespace-nowrap">
+                            {typeof row[key] === 'object'
+                              ? JSON.stringify(row[key])
+                              : String(row[key] ?? '')}
+                          </td>
+                        ))}
                         </tr>
                       ))}
                     </tbody>
