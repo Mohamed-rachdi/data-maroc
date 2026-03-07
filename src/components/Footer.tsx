@@ -87,7 +87,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center text-gray-500">
-          <p>&copy; 2024 Data Maroc. Tous droits réservés.</p>
+          <p>&copy; 2026 Data Maroc. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

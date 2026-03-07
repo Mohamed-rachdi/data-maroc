@@ -11,7 +11,7 @@ export function Header() {
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center gap-2 text-red-600 font-bold text-xl">
             <Database className="w-7 h-7" />
-            <span>Data Maroc</span>
+            <span>Geo Data Maroc</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
