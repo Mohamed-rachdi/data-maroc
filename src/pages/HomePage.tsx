@@ -52,7 +52,7 @@ export function HomePage() {
           'données télécom maroc',
           'données mobilité maroc',
         ]}
-        canonical="https://datamaroc.ma/"
+        canonical="https://geodatamaroc.com/"
       />
 
       <div className="bg-gradient-to-b from-red-50 to-white">

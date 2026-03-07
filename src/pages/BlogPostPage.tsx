@@ -53,7 +53,7 @@ export function BlogPostPage() {
         title={post.title}
         description={post.excerpt}
         keywords={post.keywords}
-        canonical={`https://datamaroc.ma/blog/${post.slug}`}
+        canonical={`https://geodatamaroc.com/blog/${post.slug}`}
       />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

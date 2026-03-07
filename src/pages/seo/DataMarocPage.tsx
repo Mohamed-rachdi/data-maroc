@@ -33,7 +33,7 @@ export function DataMarocPage() {
           'télécharger données maroc',
           'dataset maroc',
         ]}
-        canonical="https://datamaroc.ma/data-maroc"
+        canonical="https://geodatamaroc.com/data-maroc"
       />
 
       <div className="bg-gradient-to-b from-red-50 to-white">

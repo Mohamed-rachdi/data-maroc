@@ -74,8 +74,8 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <Mail className="w-4 h-4 mt-0.5 text-red-600 flex-shrink-0" />
-                <a href="mailto:contact@datamaroc.ma" className="hover:text-red-500 transition">
-                  contact@datamaroc.ma
+                <a href="mailto:contact@geodatamaroc.com" className="hover:text-red-500 transition">
+                  contact@geodatamaroc.com
                 </a>
               </li>
               <li className="flex items-start gap-2">

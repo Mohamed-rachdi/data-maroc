@@ -82,7 +82,7 @@ export function DatasetPage() {
           dataset.name.toLowerCase(),
           dataset.geographic_coverage.toLowerCase(),
         ]}
-        canonical={`https://datamaroc.ma/dataset/${dataset.slug}`}
+        canonical={`https://geodatamaroc.com/dataset/${dataset.slug}`}
       />
 
       <div className="bg-gradient-to-b from-red-50 to-white border-b border-gray-200">
