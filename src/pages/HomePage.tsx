@@ -48,7 +48,7 @@ export function HomePage() {
           'télécharger données maroc',
           'données entreprises maroc',
           'données météo maroc',
-          'données football maroc',
+          'données football',
           'données télécom maroc',
           'données mobilité maroc',
         ]}
