@@ -33,10 +33,10 @@ export function ContactPage() {
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
                   <a
-                    href="mailto:contact@datamaroc.ma"
+                    href="mailto:contact@geodatamaroc.com"
                     className="text-red-600 hover:text-red-700"
                   >
-                    contact@datamaroc.ma
+                    contact@geodatamaroc.com
                   </a>
                   <p className="text-sm text-gray-600 mt-1">
                     Réponse sous 24h en jours ouvrés
@@ -107,7 +107,7 @@ export function ContactPage() {
                 opportunités de collaboration.
               </p>
               <a
-                href="mailto:contact@datamaroc.ma?subject=Partenariat"
+                href="mailto:contact@geodatamaroc.com?subject=Partenariat"
                 className="inline-block bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition font-semibold"
               >
                 Proposer un Partenariat
