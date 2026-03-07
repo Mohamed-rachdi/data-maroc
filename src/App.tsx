@@ -12,10 +12,13 @@ import { DemoRequestPage } from './pages/DemoRequestPage';
 import { ContactPage } from './pages/ContactPage';
 import { DataMarocPage } from './pages/seo/DataMarocPage';
 import { POIMarocPage } from './pages/seo/POIMarocPage';
+import { ScrollToTop } from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
+
       <div className="min-h-screen bg-gray-50 flex flex-col">
         <Header />
         <main className="flex-1">
