@@ -13,6 +13,7 @@ import { ContactPage } from './pages/ContactPage';
 import { DataMarocPage } from './pages/seo/DataMarocPage';
 import { POIMarocPage } from './pages/seo/POIMarocPage';
 import { ScrollToTop } from './components/ScrollToTop';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 
 function App() {
   return (
@@ -32,7 +33,6 @@ function App() {
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/demo" element={<DemoRequestPage />} />
             <Route path="/contact" element={<ContactPage />} />
-
             <Route path="/data-maroc" element={<DataMarocPage />} />
             <Route path="/poi-maroc" element={<POIMarocPage />} />
             <Route path="/donnees-entreprises-maroc" element={<DataMarocPage />} />
@@ -40,6 +40,7 @@ function App() {
             <Route path="/donnees-football-maroc" element={<DataMarocPage />} />
             <Route path="/donnees-mobilite-maroc" element={<DataMarocPage />} />
             <Route path="/open-data-maroc" element={<DataMarocPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           </Routes>
         </main>
         <Footer />
