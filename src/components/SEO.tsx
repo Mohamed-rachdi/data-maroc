@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 
 interface SEOProps {
   title: string;
@@ -6,54 +6,51 @@ interface SEOProps {
   keywords?: string[];
   canonical?: string;
   ogImage?: string;
-  ogType?: 'website' | 'article';
   structuredData?: object;
 }
 
-export function SEO({
-  title,
-  description,
-  keywords = [],
-  canonical,
-  ogImage = 'https://geodatamaroc.com/og-default.jpg',
-  ogType = 'website',
-  structuredData,
-}: SEOProps) {
-  const fullTitle = `${title} | Geo Data Maroc`;
-  const siteUrl = 'https://geodatamaroc.com';
+export function SEO({ title, description, keywords = [], canonical, ogImage, structuredData }: SEOProps) {
+  useEffect(() => {
+    const fullTitle = `${title} | Geo Data Maroc`;
+    document.title = fullTitle;
 
-  return (
-    <Helmet>
-      {/* ── Balises de base ── */}
-      <title>{fullTitle}</title>
-      <meta name="description" content={description} />
-      {keywords.length > 0 && (
-        <meta name="keywords" content={keywords.join(', ')} />
-      )}
-      {canonical && <link rel="canonical" href={canonical} />}
+    const setMeta = (selector: string, attrName: string, attrValue: string, contentValue: string) => {
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attrName, attrValue);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', contentValue);
+    };
 
-      {/* ── Open Graph (Facebook / LinkedIn / WhatsApp) ── */}
-      <meta property="og:type" content={ogType} />
-      <meta property="og:site_name" content="Geo Data Maroc" />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      {canonical && <meta property="og:url" content={canonical} />}
+    setMeta('meta[name="description"]', 'name', 'description', description);
+    if (keywords.length > 0) setMeta('meta[name="keywords"]', 'name', 'keywords', keywords.join(', '));
+    setMeta('meta[property="og:title"]', 'property', 'og:title', fullTitle);
+    setMeta('meta[property="og:description"]', 'property', 'og:description', description);
+    if (ogImage) setMeta('meta[property="og:image"]', 'property', 'og:image', ogImage);
 
-      {/* ── Twitter Card ── */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
+    if (canonical) {
+      let link = document.querySelector('link[rel="canonical"]');
+      if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        document.head.appendChild(link);
+      }
+      link.setAttribute('href', canonical);
+    }
 
-      {/* ── Données structurées Schema.org (JSON-LD) ── */}
-      {structuredData && (
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      )}
-    </Helmet>
-  );
+    if (structuredData) {
+      let script = document.querySelector('script[data-seo="true"]');
+      if (!script) {
+        script = document.createElement('script');
+        script.setAttribute('type', 'application/ld+json');
+        script.setAttribute('data-seo', 'true');
+        document.head.appendChild(script);
+      }
+      script.textContent = JSON.stringify(structuredData);
+    }
+  }, [title, description, keywords, canonical, ogImage, structuredData]);
+
+  return null;
 }
