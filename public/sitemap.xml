@@ -131,7 +131,7 @@
   <url>
     <loc>https://geodatamaroc.com/category/donnees-bancaires</loc>
     <lastmod>2026-04-12</lastmod>
-    <changefreq>quarterly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
@@ -184,7 +184,7 @@
   <url>
     <loc>https://geodatamaroc.com/dataset/donnees-bancaires-par-localite</loc>
     <lastmod>2026-04-12</lastmod>
-    <changefreq>quarterly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
