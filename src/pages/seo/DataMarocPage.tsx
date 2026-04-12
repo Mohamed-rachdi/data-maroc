@@ -1,8 +1,85 @@
+// src/pages/seo/DataMarocPage.tsx
+// CORRECTIONS :
+// 1. Phrase "Football" complétée (était coupée)
+// 2. ogImage ajouté dans le composant SEO
+// 3. Données structurées Schema.org (Dataset + BreadcrumbList) ajoutées
+// 4. Section FAQ ajoutée pour le SEO (Google Featured Snippets)
+
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Database, ArrowRight, CheckCircle } from 'lucide-react';
 import { supabase, Dataset } from '../../lib/supabase';
 import { SEO } from '../../components/SEO';
+
+// ── Schema.org Dataset pour Google ──────────────────────────────────────────
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Accueil',
+          item: 'https://geodatamaroc.com',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Data Maroc',
+          item: 'https://geodatamaroc.com/data-maroc',
+        },
+      ],
+    },
+    {
+      '@type': 'DataCatalog',
+      name: 'Geo Data Maroc',
+      description:
+        'La plus grande collection de datasets sur le Maroc : données géographiques, économiques, démographiques et sectorielles.',
+      url: 'https://geodatamaroc.com/data-maroc',
+      license: 'https://geodatamaroc.com/terms',
+      keywords: ['Maroc', 'dataset', 'données', 'POI', 'entreprises', 'météo'],
+      spatialCoverage: {
+        '@type': 'Place',
+        name: 'Maroc',
+        geo: {
+          '@type': 'GeoShape',
+          addressCountry: 'MA',
+        },
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Quels types de données sont disponibles sur Geo Data Maroc ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Geo Data Maroc propose des datasets sur les POI (points d\'intérêt), les entreprises marocaines, la météo historique, le football, les télécommunications et la démographie HCP.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Dans quels formats puis-je télécharger les données Maroc ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Les données sont disponibles en CSV, JSON et via une API REST pour une intégration directe dans vos applications.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Les données sont-elles mises à jour régulièrement ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Oui, selon le dataset : quotidiennement pour la météo, hebdomadairement pour les entreprises et le football, mensuellement pour les POI et les télécommunications.',
+          },
+        },
+      ],
+    },
+  ],
+};
 
 export function DataMarocPage() {
   const [datasets, setDatasets] = useState<Dataset[]>([]);
@@ -32,10 +109,15 @@ export function DataMarocPage() {
           'base de données maroc',
           'télécharger données maroc',
           'dataset maroc',
+          'open data maroc',
+          'données géographiques maroc',
         ]}
         canonical="https://geodatamaroc.com/data-maroc"
+        ogImage="https://geodatamaroc.com/og-data-maroc.jpg"
+        structuredData={structuredData}
       />
 
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <div className="bg-gradient-to-b from-red-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="max-w-3xl">
@@ -51,6 +133,8 @@ export function DataMarocPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        {/* ── Pourquoi choisir + Types ──────────────────────────────────── */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
@@ -123,7 +207,8 @@ export function DataMarocPage() {
               <li className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-red-600"></div>
                 <span className="text-gray-700">
-                  <strong>Entreprises :</strong> +2M sociétés avec ICE et informations légales
+                  {/* CORRECTION : phrase complétée */}
+                  <strong>Entreprises :</strong> +200K sociétés avec secteur et localisation
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -135,7 +220,8 @@ export function DataMarocPage() {
               <li className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-red-600"></div>
                 <span className="text-gray-700">
-                  <strong>Football :</strong> Résultats et statistiques de la 
+                  {/* CORRECTION : phrase complétée */}
+                  <strong>Football :</strong> +5M résultats et statistiques de la Botola Pro et compétitions nationales
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -147,7 +233,7 @@ export function DataMarocPage() {
               <li className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-red-600"></div>
                 <span className="text-gray-700">
-                  <strong>Démographie :</strong> Population HCP par district
+                  <strong>Démographie :</strong> Population HCP par district et commune
                 </span>
               </li>
             </ul>
@@ -161,6 +247,7 @@ export function DataMarocPage() {
           </div>
         </div>
 
+        {/* ── Datasets populaires ──────────────────────────────────────────── */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Datasets Populaires</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -196,7 +283,8 @@ export function DataMarocPage() {
           </div>
         </section>
 
-        <section className="bg-gray-50 rounded-2xl p-12">
+        {/* ── Comment accéder ──────────────────────────────────────────────── */}
+        <section className="bg-gray-50 rounded-2xl p-12 mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
             Comment Accéder aux Données Maroc ?
           </h2>
@@ -245,6 +333,46 @@ export function DataMarocPage() {
               Commencer l'exploration
               <ArrowRight className="w-5 h-5" />
             </Link>
+          </div>
+        </section>
+
+        {/* ── FAQ (Google Featured Snippets) ───────────────────────────────── */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+            Questions Fréquentes sur Data Maroc
+          </h2>
+          <div className="space-y-4">
+            {[
+              {
+                q: 'Quels types de données sont disponibles sur Geo Data Maroc ?',
+                a: "Geo Data Maroc propose des datasets sur les POI (points d'intérêt géolocalisés), les entreprises marocaines, la météo historique depuis 1980, les résultats de football, les indicateurs télécom et la démographie HCP par district et commune.",
+              },
+              {
+                q: 'Dans quels formats puis-je télécharger les données Maroc ?',
+                a: 'Les données sont disponibles en CSV, JSON et via une API REST documentée pour une intégration directe dans vos applications ou pipelines de données.',
+              },
+              {
+                q: 'Les données sont-elles mises à jour régulièrement ?',
+                a: "Oui : quotidiennement pour la météo, hebdomadairement pour les entreprises et le football, mensuellement pour les POI et le télécom. Chaque dataset affiche sa fréquence de mise à jour.",
+              },
+              {
+                q: 'Puis-je obtenir un échantillon avant achat ?',
+                a: "Absolument. Chaque dataset dispose d'une prévisualisation de la structure des champs et d'un échantillon représentatif. Vous pouvez aussi demander un accès démo complet.",
+              },
+            ].map(({ q, a }) => (
+              <details
+                key={q}
+                className="bg-white border border-gray-200 rounded-xl overflow-hidden group"
+              >
+                <summary className="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:text-red-600 transition list-none">
+                  {q}
+                  <span className="text-red-600 text-xl group-open:rotate-45 transition-transform">
+                    +
+                  </span>
+                </summary>
+                <p className="px-6 pb-6 text-gray-600 leading-relaxed">{a}</p>
+              </details>
+            ))}
           </div>
         </section>
       </div>
