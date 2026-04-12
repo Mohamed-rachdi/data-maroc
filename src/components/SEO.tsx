@@ -1,9 +1,4 @@
-// src/components/SEO.tsx
-// CORRECTION CRITIQUE : utilise react-helmet-async au lieu de useEffect
-// Le useEffect injectait les meta APRÈS le rendu → Google voyait un HTML vide
-// react-helmet-async injecte les meta dans le <head> avant le rendu côté serveur/prerender
-
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 
 interface SEOProps {
   title: string;
@@ -11,54 +6,73 @@ interface SEOProps {
   keywords?: string[];
   canonical?: string;
   ogImage?: string;
-  ogType?: 'website' | 'article';
-  structuredData?: object;
 }
 
-export function SEO({
-  title,
-  description,
-  keywords = [],
-  canonical,
-  ogImage = 'https://geodatamaroc.com/og-default.jpg',
-  ogType = 'website',
-  structuredData,
-}: SEOProps) {
-  const fullTitle = `${title} | Geo Data Maroc`;
-  const siteUrl = 'https://geodatamaroc.com';
+export function SEO({ title, description, keywords = [], canonical, ogImage }: SEOProps) {
+  useEffect(() => {
+    document.title = `${title} | Geo Data Maroc`;
 
-  return (
-    <Helmet>
-      {/* ── Balises de base ── */}
-      <title>{fullTitle}</title>
-      <meta name="description" content={description} />
-      {keywords.length > 0 && (
-        <meta name="keywords" content={keywords.join(', ')} />
-      )}
-      {canonical && <link rel="canonical" href={canonical} />}
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', description);
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = description;
+      document.head.appendChild(meta);
+    }
 
-      {/* ── Open Graph (Facebook / LinkedIn / WhatsApp) ── */}
-      <meta property="og:type" content={ogType} />
-      <meta property="og:site_name" content="Geo Data Maroc" />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      {canonical && <meta property="og:url" content={canonical} />}
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (keywords.length > 0) {
+      if (metaKeywords) {
+        metaKeywords.setAttribute('content', keywords.join(', '));
+      } else {
+        const meta = document.createElement('meta');
+        meta.name = 'keywords';
+        meta.content = keywords.join(', ');
+        document.head.appendChild(meta);
+      }
+    }
 
-      {/* ── Twitter Card ── */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', `${title} | Geo Data Maroc`);
+    } else {
+      const meta = document.createElement('meta');
+      meta.setAttribute('property', 'og:title');
+      meta.content = `${title} | Geo Data Maroc`;
+      document.head.appendChild(meta);
+    }
 
-      {/* ── Données structurées Schema.org (JSON-LD) ── */}
-      {structuredData && (
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      )}
-    </Helmet>
-  );
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', description);
+    } else {
+      const meta = document.createElement('meta');
+      meta.setAttribute('property', 'og:description');
+      meta.content = description;
+      document.head.appendChild(meta);
+    }
+
+    if (ogImage) {
+      const ogImageMeta = document.querySelector('meta[property="og:image"]');
+      if (ogImageMeta) {
+        ogImageMeta.setAttribute('content', ogImage);
+      }
+    }
+
+    if (canonical) {
+      let linkCanonical = document.querySelector('link[rel="canonical"]');
+      if (linkCanonical) {
+        linkCanonical.setAttribute('href', canonical);
+      } else {
+        linkCanonical = document.createElement('link');
+        linkCanonical.setAttribute('rel', 'canonical');
+        linkCanonical.setAttribute('href', canonical);
+        document.head.appendChild(linkCanonical);
+      }
+    }
+  }, [title, description, keywords, canonical, ogImage]);
+
+  return null;
 }
