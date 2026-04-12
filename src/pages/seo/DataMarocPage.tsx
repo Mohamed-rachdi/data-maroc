@@ -1,10 +1,3 @@
-// src/pages/seo/DataMarocPage.tsx
-// CORRECTIONS :
-// 1. Phrase "Football" complétée (était coupée)
-// 2. ogImage ajouté dans le composant SEO
-// 3. Données structurées Schema.org (Dataset + BreadcrumbList) ajoutées
-// 4. Section FAQ ajoutée pour le SEO (Google Featured Snippets)
-
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Database, ArrowRight, CheckCircle } from 'lucide-react';
