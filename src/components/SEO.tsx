@@ -1,8 +1,3 @@
-// src/components/SEO.tsx
-// CORRECTION CRITIQUE : utilise react-helmet-async au lieu de useEffect
-// Le useEffect injectait les meta APRÈS le rendu → Google voyait un HTML vide
-// react-helmet-async injecte les meta dans le <head> avant le rendu côté serveur/prerender
-
 import { Helmet } from 'react-helmet-async';
 
 interface SEOProps {
